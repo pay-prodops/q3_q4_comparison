@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Points &mdash; Q3 vs Q4 2026 Comparison</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f0f2f5;--surface:#fff;--border:#e2e5ea;--border-strong:#c9cdd6;--text-primary:#0f1623;--text-secondary:#5a6272;--text-muted:#959dac;--blue:#1a56db;--blue-light:#eff4ff;--blue-border:#bfcff8;--green:#0e7c4a;--green-bg:#dcfce7;--green-border:#86efac;--btl:#6b7280;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text-primary);font-size:13px;line-height:1.5}
+  .page{max-width:1280px;margin:0 auto;padding:32px 24px 80px}
+  header{margin-bottom:24px}
+  .header-eyebrow{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+  header h1{font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-.4px;margin-bottom:4px}
+  .header-meta{font-size:11px;color:var(--text-muted)}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+  .kpi{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+  .kpi-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:6px}
+  .kpi-value{font-family:var(--mono);font-size:26px;font-weight:600;line-height:1;margin-bottom:4px}
+  .kpi-sub{font-size:11px;color:var(--text-muted)}
+  .kv-blue{color:var(--blue)}
+  .tab-bar{display:flex;gap:1px;border-bottom:2px solid var(--border);margin-bottom:20px}
+  .tab{padding:10px 20px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text-secondary);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .1s;white-space:nowrap}
+  .tab:hover{color:var(--text-primary)}.tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:600}
+  .tab .count{font-size:11px;opacity:.6;margin-left:4px}
+  .panel{display:none}.panel.active{display:block}
+  .legend{display:flex;gap:18px;margin-bottom:12px;font-size:11px;color:var(--text-secondary);flex-wrap:wrap;align-items:center}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;overflow-x:auto;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:28px}
+  table{width:100%;border-collapse:collapse}
+  thead{background:#f8f9fb}
+  thead th{padding:10px 12px 8px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);border-bottom:1px solid var(--border)}
+  thead th.num{text-align:left}
+  tbody tr{border-bottom:1px solid #f3f4f6}tbody tr:last-child{border-bottom:none}tbody tr:hover{background:#fafbfc}
+  td{padding:8px 12px}
+  td.name{font-weight:500;color:var(--text-primary);white-space:nowrap}
+  td.num{text-align:left;font-family:var(--mono);font-size:12px;color:var(--text-secondary);min-width:64px;white-space:nowrap}
+  td.atl-val{color:var(--blue);font-weight:600}
+  tfoot tr{background:var(--blue-light);border-top:2px solid var(--blue-border)}
+  tfoot td{padding:9px 12px;font-weight:700;font-family:var(--mono);font-size:12px;color:var(--blue)}
+  tfoot td.name-cell{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--blue)}
+  tfoot td.num{text-align:left}
+  .delta-good{font-size:11px;font-weight:600;color:#15803d}
+  .delta-bad{font-size:11px;font-weight:600;color:#dc2626}
+  .note{background:#eff4ff;border-left:3px solid #1a56db;padding:10px 14px;border-radius:0 6px 6px 0;font-size:11px;color:#1e3a8a;margin-bottom:20px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="header-eyebrow">HealthEdge &middot; PI 26.3 &rarr; PI 26.4</div>
+    <h1>Story Points &mdash; Quarter-over-Quarter Comparison (Above the Line)</h1>
+    <div class="header-meta">Q3: readiness dashboard snapshot, 6/26/2026 &middot; Q4: Value Stream/Scrum Team from CSV export (9/8/2026), Story Points pulled live from Jira</div>
+  </header>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">ATL SP &mdash; Q3</div><div class="kpi-value kv-blue">3,303</div><div class="kpi-sub">committed capacity, Q3</div></div>
+    <div class="kpi"><div class="kpi-label">ATL SP &mdash; Q4</div><div class="kpi-value kv-blue">2,491</div><div class="kpi-sub">committed capacity, Q4 (live)</div></div>
+    <div class="kpi"><div class="kpi-label">Net Change</div><div class="kpi-value" style="color:#dc2626">&darr;812</div><div class="kpi-sub">ATL SP, quarter over quarter</div></div>
+    <div class="kpi"><div class="kpi-label">% Change</div><div class="kpi-value" style="color:#dc2626">&minus;25%</div><div class="kpi-sub">ATL SP only</div></div>
+  </div>
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab('vs',this)">By Value Stream <span class="count">15 streams</span></button>
+    <button class="tab" onclick="switchTab('team',this)">By Scrum Team <span class="count">44 rows</span></button>
+  </div>
+
+  <div class="panel active" id="panel-vs">
+    <div class="legend">
+      <span><span class="delta-good">&uarr;</span> more ATL SP than Q3 (added capacity)</span>
+      <span><span class="delta-bad">&darr;</span> less ATL SP than Q3</span>
+      <span style="margin-left:4px;color:var(--text-muted)">&middot; sorted alphabetically</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th>Value Stream</th>
+        <th class="num">Q3 ATL SP</th>
+        <th class="num" style="border-left:1px solid var(--border)">Q4 ATL SP</th>
+        <th class="num" style="border-left:1px solid var(--border-strong)">Delta</th>
+        <th class="num">% Chg</th>
+      </tr></thead>
+      <tbody>
+<tr><td class="name">AHA/IBC</td>
+<td class="num atl-val">23</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;23</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name">Billing & Financials</td>
+<td class="num atl-val">145</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">256</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;111</span></td>
+<td class="num" style="color:var(--text-secondary)">+77%</td>
+</tr>
+<tr><td class="name">BlueCard / 27X</td>
+<td class="num atl-val">93</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">87</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;6</span></td>
+<td class="num" style="color:var(--text-secondary)">-6%</td>
+</tr>
+<tr><td class="name">Claims & Configuration</td>
+<td class="num atl-val">475</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">444</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;31</span></td>
+<td class="num" style="color:var(--text-secondary)">-7%</td>
+</tr>
+<tr><td class="name">Core-Web</td>
+<td class="num atl-val">21</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;21</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name">CVSH</td>
+<td class="num atl-val">193</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">131</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;62</span></td>
+<td class="num" style="color:var(--text-secondary)">-32%</td>
+</tr>
+<tr><td class="name">Enrollment</td>
+<td class="num atl-val">202</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">183</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;19</span></td>
+<td class="num" style="color:var(--text-secondary)">-9%</td>
+</tr>
+<tr><td class="name">Implementation Accelerators</td>
+<td class="num atl-val">131</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">122</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;9</span></td>
+<td class="num" style="color:var(--text-secondary)">-7%</td>
+</tr>
+<tr><td class="name">Integrations</td>
+<td class="num atl-val">338</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">358</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;20</span></td>
+<td class="num" style="color:var(--text-secondary)">+6%</td>
+</tr>
+<tr><td class="name">MMO ASO Billing</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span style="color:var(--text-muted)">&mdash;</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name">Northwinds</td>
+<td class="num atl-val">76</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">34</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;42</span></td>
+<td class="num" style="color:var(--text-secondary)">-55%</td>
+</tr>
+<tr><td class="name">PDM</td>
+<td class="num atl-val">1,336</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">284</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;1,052</span></td>
+<td class="num" style="color:var(--text-secondary)">-79%</td>
+</tr>
+<tr><td class="name">Performance & Scale</td>
+<td class="num atl-val">51</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">61</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;10</span></td>
+<td class="num" style="color:var(--text-secondary)">+20%</td>
+</tr>
+<tr><td class="name">Platform / Core Modules</td>
+<td class="num atl-val">184</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">449</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;265</span></td>
+<td class="num" style="color:var(--text-secondary)">+144%</td>
+</tr>
+<tr><td class="name">SCO</td>
+<td class="num atl-val">35</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">82</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;47</span></td>
+<td class="num" style="color:var(--text-secondary)">+134%</td>
+</tr>
+      </tbody>
+      <tfoot><tr><td class="name-cell">TOTAL</td><td class="num">3,303</td><td class="num" style="border-left:1px solid var(--border-strong)">2,444</td><td class="num" style="border-left:1px solid var(--border-strong)"><span class="delta-bad">&darr;859</span></td><td class="num">&minus;26%</td></tr></tfoot>
+    </table></div>
+  </div>
+
+  <div class="panel" id="panel-team">
+    <div class="legend">
+      <span><span class="delta-good">&uarr;</span> more ATL SP than Q3 (added capacity)</span>
+      <span><span class="delta-bad">&darr;</span> less ATL SP than Q3</span>
+      <span style="margin-left:4px;color:var(--text-muted)">&middot; grouped by Value Stream (alphabetical), then Q4 ATL SP within group</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th>Value Stream</th>
+        <th>Scrum Team</th>
+        <th class="num">Q3 ATL SP</th>
+        <th class="num" style="border-left:1px solid var(--border)">Q4 ATL SP</th>
+        <th class="num" style="border-left:1px solid var(--border-strong)">Delta</th>
+        <th class="num">% Chg</th>
+      </tr></thead>
+      <tbody>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">AHA/IBC</td>
+<td class="name">Sapphire</td>
+<td class="num atl-val">23</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;23</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Billing & Financials</td>
+<td class="name">Masterminds</td>
+<td class="num atl-val">48</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">100</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;52</span></td>
+<td class="num" style="color:var(--text-secondary)">+108%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Elite</td>
+<td class="num atl-val">57</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">88</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;31</span></td>
+<td class="num" style="color:var(--text-secondary)">+54%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Apexians</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">28</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;28</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Titans</td>
+<td class="num atl-val">40</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">15</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;25</span></td>
+<td class="num" style="color:var(--text-secondary)">-62%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">BlueCard / 27X</td>
+<td class="name">Alpha</td>
+<td class="num atl-val">65</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">60</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;5</span></td>
+<td class="num" style="color:var(--text-secondary)">-8%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Sunshine</td>
+<td class="num atl-val">28</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">27</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;1</span></td>
+<td class="num" style="color:var(--text-secondary)">-4%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Claims & Configuration</td>
+<td class="name">Game Changers</td>
+<td class="num atl-val">164</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">131</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;33</span></td>
+<td class="num" style="color:var(--text-secondary)">-20%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Claim2Fame</td>
+<td class="num atl-val">135</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">107</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;28</span></td>
+<td class="num" style="color:var(--text-secondary)">-21%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Agniveer</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">86</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;86</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Santhals</td>
+<td class="num atl-val">127</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">72</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;55</span></td>
+<td class="num" style="color:var(--text-secondary)">-43%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Visharad</td>
+<td class="num atl-val">49</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">35</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;14</span></td>
+<td class="num" style="color:var(--text-secondary)">-29%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Core-Web</td>
+<td class="name">HealthVeers</td>
+<td class="num atl-val">21</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;21</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">CVSH</td>
+<td class="name">Nexus</td>
+<td class="num atl-val">150</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">80</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;70</span></td>
+<td class="num" style="color:var(--text-secondary)">-47%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Avengers</td>
+<td class="num atl-val">20</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">18</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;2</span></td>
+<td class="num" style="color:var(--text-secondary)">-10%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Nimbus</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">3</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;3</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Marvels</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span style="color:var(--text-muted)">&mdash;</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Phoenix</td>
+<td class="num atl-val">10</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;10</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Unicorn</td>
+<td class="num atl-val">13</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;13</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Enrollment</td>
+<td class="name">Nirvana</td>
+<td class="num atl-val">105</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">187</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;82</span></td>
+<td class="num" style="color:var(--text-secondary)">+78%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Hercules</td>
+<td class="num atl-val">97</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">46</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;51</span></td>
+<td class="num" style="color:var(--text-secondary)">-53%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Implementation Accelerators</td>
+<td class="name">Impetus</td>
+<td class="num atl-val">131</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">172</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;41</span></td>
+<td class="num" style="color:var(--text-secondary)">+31%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Integrations</td>
+<td class="name">Dorians</td>
+<td class="num atl-val">233</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">160</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;73</span></td>
+<td class="num" style="color:var(--text-secondary)">-31%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Apache</td>
+<td class="num atl-val">82</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">129</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;47</span></td>
+<td class="num" style="color:var(--text-secondary)">+57%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Impetus</td>
+<td class="num atl-val">23</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;23</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">MMO ASO Billing</td>
+<td class="name">Zenith</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span style="color:var(--text-muted)">&mdash;</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Northwinds</td>
+<td class="name">Explorers</td>
+<td class="num atl-val">55</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">21</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;34</span></td>
+<td class="num" style="color:var(--text-secondary)">-62%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Alistar</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">13</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;13</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Galaxy</td>
+<td class="num atl-val">21</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;21</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">PDM</td>
+<td class="name">MMO Implementation</td>
+<td class="num atl-val">581</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">110</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;471</span></td>
+<td class="num" style="color:var(--text-secondary)">-81%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Healthfirst Implementation</td>
+<td class="num atl-val">188</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">94</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;94</span></td>
+<td class="num" style="color:var(--text-secondary)">-50%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Quasar</td>
+<td class="num atl-val">230</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">60</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;170</span></td>
+<td class="num" style="color:var(--text-secondary)">-74%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Core - PDM</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">20</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;20</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">AS Avengers</td>
+<td class="num atl-val">212</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;212</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Partnership Health Implementation</td>
+<td class="num atl-val">125</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;125</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Performance & Scale</td>
+<td class="name">Incas</td>
+<td class="num atl-val">51</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">61</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;10</span></td>
+<td class="num" style="color:var(--text-secondary)">+20%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">Platform / Core Modules</td>
+<td class="name">SwordRunners</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">275</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;275</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Vikings</td>
+<td class="num atl-val">90</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">84</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;6</span></td>
+<td class="num" style="color:var(--text-secondary)">-7%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">DreamBuilders</td>
+<td class="num atl-val">58</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">80</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;22</span></td>
+<td class="num" style="color:var(--text-secondary)">+38%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">StormTroopers</td>
+<td class="num atl-val">36</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;36</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">SCO</td>
+<td class="name">Stratus</td>
+<td class="num atl-val">8</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">69</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;61</span></td>
+<td class="num" style="color:var(--text-secondary)">+762%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Sapphire</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">13</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;13</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Jazz</td>
+<td class="num atl-val">27</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;27</span></td>
+<td class="num" style="color:var(--text-secondary)">-100%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Nimbus</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span style="color:var(--text-muted)">&mdash;</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+      </tbody>
+      <tfoot><tr><td class="name-cell" colspan="2">TOTAL</td><td class="num">3,303</td><td class="num" style="border-left:1px solid var(--border-strong)">2,491</td><td class="num" style="border-left:1px solid var(--border-strong)"><span class="delta-bad">&darr;812</span></td><td class="num">&minus;25%</td></tr></tfoot>
+    </table></div>
+  </div>
+
+</div>
+<script>
+function switchTab(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
