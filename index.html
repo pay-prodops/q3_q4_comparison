@@ -51,17 +51,17 @@
   <header>
     <div class="header-eyebrow">HealthEdge &middot; PI 26.3 &rarr; PI 26.4</div>
     <h1>Story Points &mdash; Quarter-over-Quarter Comparison (Above the Line)</h1>
-    <div class="header-meta">Q3: readiness dashboard snapshot, 6/26/2026 &middot; Q4: Value Stream/Scrum Team from CSV export (9/15/2026, 8:59am), Story Points refreshed live from Jira for every epic (not cached)</div>
+    <div class="header-meta">Q3: readiness dashboard snapshot, 6/26/2026 &middot; Q4: Value Stream/Scrum Team from CSV export (9/16/2026, 9:39am), Story Points refreshed live from Jira for every epic (not cached)</div>
   </header>
   <div class="kpi-row">
     <div class="kpi"><div class="kpi-label">ATL SP &mdash; Q3</div><div class="kpi-value kv-blue">3,303</div><div class="kpi-sub">committed capacity, Q3</div></div>
-    <div class="kpi"><div class="kpi-label">ATL SP &mdash; Q4</div><div class="kpi-value kv-blue">4,047</div><div class="kpi-sub">committed capacity, Q4 (live)</div></div>
-    <div class="kpi"><div class="kpi-label">Net Change</div><div class="kpi-value" style="color:#15803d">&uarr;744</div><div class="kpi-sub">ATL SP, quarter over quarter</div></div>
-    <div class="kpi"><div class="kpi-label">% Change</div><div class="kpi-value" style="color:#15803d">+23%</div><div class="kpi-sub">ATL SP only</div></div>
+    <div class="kpi"><div class="kpi-label">ATL SP &mdash; Q4</div><div class="kpi-value kv-blue">4,103</div><div class="kpi-sub">committed capacity, Q4 (live)</div></div>
+    <div class="kpi"><div class="kpi-label">Net Change</div><div class="kpi-value" style="color:#15803d">&uarr;800</div><div class="kpi-sub">ATL SP, quarter over quarter</div></div>
+    <div class="kpi"><div class="kpi-label">% Change</div><div class="kpi-value" style="color:#15803d">+24%</div><div class="kpi-sub">ATL SP only</div></div>
   </div>
   <div class="tab-bar">
-    <button class="tab active" onclick="switchTab('vs',this)">By Value Stream <span class="count">15 streams</span></button>
-    <button class="tab" onclick="switchTab('team',this)">By Scrum Team <span class="count">47 rows</span></button>
+    <button class="tab active" onclick="switchTab('vs',this)">By Value Stream <span class="count">16 streams</span></button>
+    <button class="tab" onclick="switchTab('team',this)">By Scrum Team <span class="count">49 rows</span></button>
   </div>
 
   <div class="panel active" id="panel-vs">
@@ -79,6 +79,12 @@
         <th class="num">% Chg</th>
       </tr></thead>
       <tbody>
+<tr><td class="name">(unspecified)</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">21</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;21</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
 <tr><td class="name">AHA/IBC</td>
 <td class="num atl-val">23</td>
 <td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
@@ -111,9 +117,9 @@
 </tr>
 <tr><td class="name">CVSH</td>
 <td class="num atl-val">193</td>
-<td class="num atl-val" style="border-left:1px solid var(--border)">816</td>
-<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;623</span></td>
-<td class="num" style="color:var(--text-secondary)">+323%</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">776</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;583</span></td>
+<td class="num" style="color:var(--text-secondary)">+302%</td>
 </tr>
 <tr><td class="name">Enrollment</td>
 <td class="num atl-val">202</td>
@@ -147,15 +153,15 @@
 </tr>
 <tr><td class="name">PDM</td>
 <td class="num atl-val">1,336</td>
-<td class="num atl-val" style="border-left:1px solid var(--border)">819</td>
-<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;517</span></td>
-<td class="num" style="color:var(--text-secondary)">-39%</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">849</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;487</span></td>
+<td class="num" style="color:var(--text-secondary)">-36%</td>
 </tr>
 <tr><td class="name">Performance & Scale</td>
 <td class="num atl-val">51</td>
-<td class="num atl-val" style="border-left:1px solid var(--border)">61</td>
-<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;10</span></td>
-<td class="num" style="color:var(--text-secondary)">+20%</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">76</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;25</span></td>
+<td class="num" style="color:var(--text-secondary)">+49%</td>
 </tr>
 <tr><td class="name">Platform / Core Modules</td>
 <td class="num atl-val">184</td>
@@ -165,12 +171,12 @@
 </tr>
 <tr><td class="name">SCO</td>
 <td class="num atl-val">35</td>
-<td class="num atl-val" style="border-left:1px solid var(--border)">82</td>
-<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;47</span></td>
-<td class="num" style="color:var(--text-secondary)">+134%</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">112</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;77</span></td>
+<td class="num" style="color:var(--text-secondary)">+220%</td>
 </tr>
       </tbody>
-      <tfoot><tr><td class="name-cell">TOTAL</td><td class="num">3,303</td><td class="num" style="border-left:1px solid var(--border-strong)">4,047</td><td class="num" style="border-left:1px solid var(--border-strong)"><span class="delta-good">&uarr;744</span></td><td class="num">+23%</td></tr></tfoot>
+      <tfoot><tr><td class="name-cell">TOTAL</td><td class="num">3,303</td><td class="num" style="border-left:1px solid var(--border-strong)">4,103</td><td class="num" style="border-left:1px solid var(--border-strong)"><span class="delta-good">&uarr;800</span></td><td class="num">+24%</td></tr></tfoot>
     </table></div>
   </div>
 
@@ -190,6 +196,13 @@
         <th class="num">% Chg</th>
       </tr></thead>
       <tbody>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px">(unspecified)</td>
+<td class="name">Stratus</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">21</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;21</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px">AHA/IBC</td>
 <td class="name">Sapphire</td>
 <td class="num atl-val">23</td>
@@ -275,6 +288,13 @@
 <td class="num" style="color:var(--text-secondary)">-32%</td>
 </tr>
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px">Core-Web</td>
+<td class="name">(unassigned)</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span style="color:var(--text-muted)">&mdash;</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
 <td class="name">HealthVeers</td>
 <td class="num atl-val">21</td>
 <td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
@@ -289,13 +309,6 @@
 <td class="num" style="color:var(--text-secondary)">+710%</td>
 </tr>
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
-<td class="name">Nexus</td>
-<td class="num atl-val">150</td>
-<td class="num atl-val" style="border-left:1px solid var(--border)">160</td>
-<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;10</span></td>
-<td class="num" style="color:var(--text-secondary)">+7%</td>
-</tr>
-<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
 <td class="name">Marvels</td>
 <td class="num atl-val">—</td>
 <td class="num atl-val" style="border-left:1px solid var(--border)">146</td>
@@ -308,6 +321,13 @@
 <td class="num atl-val" style="border-left:1px solid var(--border)">130</td>
 <td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;120</span></td>
 <td class="num" style="color:var(--text-secondary)">+1200%</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Nexus</td>
+<td class="num atl-val">150</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">120</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;30</span></td>
+<td class="num" style="color:var(--text-secondary)">-20%</td>
 </tr>
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
 <td class="name">Odyssey</td>
@@ -401,18 +421,18 @@
 <td class="num" style="color:var(--text-secondary)">-100%</td>
 </tr>
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px">PDM</td>
+<td class="name">Core - PDM</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">294</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;294</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
 <td class="name">MMO Implementation</td>
 <td class="num atl-val">581</td>
 <td class="num atl-val" style="border-left:1px solid var(--border)">290</td>
 <td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;291</span></td>
 <td class="num" style="color:var(--text-secondary)">-50%</td>
-</tr>
-<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
-<td class="name">Core - PDM</td>
-<td class="num atl-val">—</td>
-<td class="num atl-val" style="border-left:1px solid var(--border)">264</td>
-<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;264</span></td>
-<td class="num" style="color:var(--text-secondary)">&mdash;</td>
 </tr>
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
 <td class="name">Healthfirst Implementation</td>
@@ -452,9 +472,9 @@
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px">Performance & Scale</td>
 <td class="name">Incas</td>
 <td class="num atl-val">51</td>
-<td class="num atl-val" style="border-left:1px solid var(--border)">61</td>
-<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;10</span></td>
-<td class="num" style="color:var(--text-secondary)">+20%</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">76</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;25</span></td>
+<td class="num" style="color:var(--text-secondary)">+49%</td>
 </tr>
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px">Platform / Core Modules</td>
 <td class="name">SwordRunners</td>
@@ -499,6 +519,13 @@
 <td class="num" style="color:var(--text-secondary)">+762%</td>
 </tr>
 <tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
+<td class="name">Nimbus</td>
+<td class="num atl-val">—</td>
+<td class="num atl-val" style="border-left:1px solid var(--border)">30</td>
+<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-good">&uarr;30</span></td>
+<td class="num" style="color:var(--text-secondary)">&mdash;</td>
+</tr>
+<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
 <td class="name">Sapphire</td>
 <td class="num atl-val">—</td>
 <td class="num atl-val" style="border-left:1px solid var(--border)">13</td>
@@ -512,15 +539,8 @@
 <td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span class="delta-bad">&darr;27</span></td>
 <td class="num" style="color:var(--text-secondary)">-100%</td>
 </tr>
-<tr><td class="name" style="color:var(--text-secondary);font-size:11px"></td>
-<td class="name">Nimbus</td>
-<td class="num atl-val">—</td>
-<td class="num atl-val" style="border-left:1px solid var(--border)">—</td>
-<td class="num" style="border-left:1px solid var(--border-strong);font-weight:600"><span style="color:var(--text-muted)">&mdash;</span></td>
-<td class="num" style="color:var(--text-secondary)">&mdash;</td>
-</tr>
       </tbody>
-      <tfoot><tr><td class="name-cell" colspan="2">TOTAL</td><td class="num">3,303</td><td class="num" style="border-left:1px solid var(--border-strong)">4,047</td><td class="num" style="border-left:1px solid var(--border-strong)"><span class="delta-good">&uarr;744</span></td><td class="num">+23%</td></tr></tfoot>
+      <tfoot><tr><td class="name-cell" colspan="2">TOTAL</td><td class="num">3,303</td><td class="num" style="border-left:1px solid var(--border-strong)">4,103</td><td class="num" style="border-left:1px solid var(--border-strong)"><span class="delta-good">&uarr;800</span></td><td class="num">+24%</td></tr></tfoot>
     </table></div>
   </div>
 
